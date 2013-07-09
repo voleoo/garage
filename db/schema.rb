@@ -11,17 +11,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130703193218) do
+ActiveRecord::Schema.define(version: 20130707223428) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cars", force: true do |t|
     t.string   "vim"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.integer  "user_id"
   end
 
-  add_index "cars", ["user_id"], name: "index_cars_on_user_id"
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "car_id"
+    t.string   "deadline"
+    t.string   "price"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "special_deals_id"
+  end
+
+  create_table "performers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phones", force: true do |t|
+    t.integer  "user_id"
+    t.string   "phone"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures", force: true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.string   "file"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["imageable_id", "imageable_type"], name: "index_pictures_on_imageable_id_and_imageable_type", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "service_brands", force: true do |t|
     t.string   "brand"
@@ -35,10 +85,50 @@ ActiveRecord::Schema.define(version: 20130703193218) do
     t.datetime "updated_at"
   end
 
+  create_table "special_deal_statuses", force: true do |t|
+    t.integer  "special_deal_id"
+    t.integer  "status_id"
+    t.integer  "number_times"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "special_deals", force: true do |t|
+    t.string   "title"
+    t.integer  "discount"
+    t.text     "description"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users_cars", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_cars", ["car_id"], name: "index_users_cars_on_car_id", using: :btree
+  add_index "users_cars", ["user_id"], name: "index_users_cars_on_user_id", using: :btree
+
+  create_table "users_services", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "service_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

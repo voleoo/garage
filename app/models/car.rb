@@ -1,3 +1,4 @@
 class Car < ActiveRecord::Base
-	belongs_to :user
+	has_many :users_cars
+	has_many :user, through: :users_cars
 end
