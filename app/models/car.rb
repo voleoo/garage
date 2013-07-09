@@ -1,4 +1,6 @@
 class Car < ActiveRecord::Base
 	has_many :users_cars
-	has_many :user, through: :users_cars
+	has_many :users, through: :users_cars
+	has_many :orders
+	has_many :pictures, as: :imageable
 end

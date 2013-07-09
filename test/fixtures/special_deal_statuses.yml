@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  special_deal_id: 1
+  status_id: 1
+  number_times: 1
+
+two:
+  special_deal_id: 1
+  status_id: 1
+  number_times: 1

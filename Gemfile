@@ -38,6 +38,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'rspec-rails'
+  #gem 'factory-girl-rails'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

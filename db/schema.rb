@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130707223428) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130709212642) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
     t.string   "login"
     t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "brands", force: true do |t|
+    t.string   "brand"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,6 +87,15 @@ ActiveRecord::Schema.define(version: 20130707223428) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "services_brands", id: false, force: true do |t|
+    t.integer "service_id"
+    t.integer "brand_id"
+  end
+
+  add_index "services_brands", ["brand_id"], name: "index_services_brands_on_brand_id", using: :btree
+  add_index "services_brands", ["service_id", "brand_id"], name: "index_services_brands_on_service_id_and_brand_id", using: :btree
+  add_index "services_brands", ["service_id"], name: "index_services_brands_on_service_id", using: :btree
 
   create_table "special_deal_statuses", force: true do |t|
     t.integer  "special_deal_id"
