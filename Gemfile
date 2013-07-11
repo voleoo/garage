@@ -40,7 +40,7 @@ end
 
 group :test do
   gem 'rspec-rails'
-  #gem 'factory-girl-rails'
+	gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
 end
