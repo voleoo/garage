@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709212642) do
+ActiveRecord::Schema.define(version: 20130710205754) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
-    t.string   "login"
+    t.string   "email"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -76,12 +76,6 @@ ActiveRecord::Schema.define(version: 20130709212642) do
     t.datetime "updated_at"
   end
 
-  create_table "service_brands", force: true do |t|
-    t.string   "brand"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "services", force: true do |t|
     t.string   "service"
     t.datetime "created_at"
@@ -126,7 +120,12 @@ ActiveRecord::Schema.define(version: 20130709212642) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
+    t.integer  "status_id"
   end
+
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
+  add_index "users", ["status_id"], name: "index_users_on_status_id", using: :btree
 
   create_table "users_cars", force: true do |t|
     t.integer  "user_id"
