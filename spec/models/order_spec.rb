@@ -10,11 +10,8 @@ describe Order do
   end
 
   describe "validations" do
-    #it { should_not allow_value("2013-01-01 25:00:01").for(:deadline) }
-    #it { should allow_value("2013-01-01 11:00:01").for(:deadline) }
-
-    it { should_not allow_value("2013-31-01").for(:deadline) }
-    it { should allow_value("+380000000000").for(:deadline) }
+    it { should_not allow_value("2013-01-01 25:00:01").for(:deadline) }
+    it { should allow_value("2013-01-01 11:00:01").for(:deadline) }
     it { should validate_numericality_of :price }
   end
 
