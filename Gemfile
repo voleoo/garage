@@ -12,6 +12,9 @@ gem 'mysql2'
 #Use postgresql as the database for Active Record
 gem 'pg'
 
+# Use HAML for html
+gem "haml-rails", "~> 0.4"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
@@ -40,7 +43,7 @@ end
 
 group :test do
   gem 'rspec-rails'
-	gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
 end

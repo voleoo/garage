@@ -1,6 +1,6 @@
 #rails g migration AddRoleRefToUsers role:references
 class AddRoleRefToUsers < ActiveRecord::Migration
-	def up
+  def up
     add_reference :users, :role, index: true
 
     #add a foreign key
@@ -13,7 +13,7 @@ class AddRoleRefToUsers < ActiveRecord::Migration
   end
   
   def down
-  	remove_column :users, :role_id
+    remove_column :users, :role_id
     execute <<-SQL
       ALTER TABLE users
         DROP FOREIGN KEY fk_users_roles

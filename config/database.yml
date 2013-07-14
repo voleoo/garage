@@ -16,13 +16,21 @@ development:
 #  username: leoo
 #  password: leoo
 
+#test:
+#  adapter: sqlite3
+#  database: db/test.sqlite3
+#  pool: 5
+#  timeout: 5000
+
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: test-todo-on-rails
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: garage-test
   pool: 5
   username: leoo
-  password: leoo
+  password: leoomysql
+  host: localhost
 
 production:
   adapter: postgresql

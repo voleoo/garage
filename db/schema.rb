@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130711175738) do
+ActiveRecord::Schema.define(version: 20130714215059) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 20130711175738) do
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "car_id"
-    t.datetime "deadline",         null: false
+    t.datetime "deadline",        null: false
     t.string   "price"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "special_deals_id"
+    t.integer  "special_deal_id"
   end
 
   create_table "performers", force: true do |t|
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20130711175738) do
     t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "path"
   end
 
   add_index "pictures", ["imageable_id", "imageable_type"], name: "index_pictures_on_imageable_id_and_imageable_type", using: :btree

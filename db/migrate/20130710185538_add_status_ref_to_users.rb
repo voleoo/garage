@@ -13,7 +13,7 @@ class AddStatusRefToUsers < ActiveRecord::Migration
   end
   
   def down
-  	remove_column :users, :status_id
+    remove_column :users, :status_id
     execute <<-SQL
       ALTER TABLE users
         DROP FOREIGN KEY fk_users_statuses

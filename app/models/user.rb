@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :users_services
   has_many :services, through: :users_services
   belongs_to :role
+
+  validates :role_id, :status_id, presence: true
 end

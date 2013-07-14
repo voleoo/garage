@@ -1,4 +1,4 @@
-class UsersServices < ActiveRecord::Base
+class UsersService < ActiveRecord::Base
   belongs_to :service
   belongs_to :user
 end

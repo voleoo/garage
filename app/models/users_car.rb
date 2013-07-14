@@ -1,4 +1,4 @@
-class UsersCars < ActiveRecord::Base
+class UsersCar < ActiveRecord::Base
   belongs_to :user
   belongs_to :car
 end
