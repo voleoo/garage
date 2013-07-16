@@ -3,7 +3,7 @@ class ChangeTypeColumn < ActiveRecord::Migration
     #change type column
     execute <<-SQL
       ALTER TABLE `orders`
-      CHANGE `deadline` `deadline` DATETIME NOT NULL 
+      CHANGE `deadline` `deadline` DATETIME NULL 
     SQL
   end
   
@@ -11,7 +11,7 @@ class ChangeTypeColumn < ActiveRecord::Migration
     #change type column
     execute <<-SQL
       ALTER TABLE `orders`
-      CHANGE `deadline` `deadline` VARCHAR(255) NOT NULL
+      CHANGE `deadline` `deadline` VARCHAR(255) NULL
     SQL
   end
 end

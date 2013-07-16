@@ -1,4 +1,8 @@
 Community::Application.routes.draw do
+  get "user/update"
+  get "user/show"
+  get "user/new"
+  get "user/create"
 #  resources :users
 #    GET          /posts  index   display a list of all posts
 #    GET          /posts/new  new   return an HTML form for creating a new post
@@ -7,6 +11,8 @@ Community::Application.routes.draw do
 #    GET          /posts/:id/edit   edit  return an HTML form for editing a post
 #    PATCH/PUT    /posts/:id  update  update a specific post
 #    DELETE       /posts/:id  destroy   delete a specific post
+  resources :user
+
   resources :authentications
   resources :brands
   #resources :cars
