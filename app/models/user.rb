@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  attr_accessible :first_name, :last_name, :description, :role_id, :status_id
+
   has_many :users_cars
   has_many :cars, through: :users_cars
   has_many :pictures, as: :imageable
@@ -12,4 +14,6 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   validates :role_id, :status_id, presence: true
+
+  accepts_nested_attributes_for :cars
 end

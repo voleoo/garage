@@ -1,0 +1,9 @@
+<ul>
+  <% if session[:user_id] %>
+    <li><%= link_to "My Profile #{session[:user_id]}", user_path(current_user)%> </li>
+    <li><%= link_to "Sign out", authentications_path, :method=>:delete%> </li>
+  <% else %>
+    <li><%= link_to "Sign up", registrations_path%> </li>
+    <li><%= link_to "Sign in", authentications_path%> </li>
+  <% end %>
+</ul>

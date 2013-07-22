@@ -1,5 +1,6 @@
 class Authentication < ActiveRecord::Base
-  #attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :user_id
+  has_secure_password
 
   belongs_to :user
 
@@ -13,9 +14,11 @@ class Authentication < ActiveRecord::Base
     presence: true,
     confirmation: true
 
-  before_create do |auth|
-    role_id = Role.select("id").where("role = 'user'").limit(1)
-    status_id = Status.select("id").where("status = 'User'").limit(1)
-    auth.user_id = User.create(role_id: role_id, status_id: status_id).id
+  before_create do |a|
+    unless a.user_id
+      role_id = Role.select("id").where("role = 'user'").limit(1)
+      status_id = Status.select("id").where("status = 'user'").limit(1)
+      a.user_id = User.create(role_id: role_id.first.id, status_id: status_id.first.id).id
+    end
   end
 end

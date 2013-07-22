@@ -1,9 +1,20 @@
 Community::Application.routes.draw do
-  get "user/update"
-  get "user/show"
-  get "user/new"
-  get "user/create"
-#  resources :users
+  root :to => 'main#home'
+
+  resources :authentications
+  delete 'authentications', to: 'authentications#destroy'
+  resources :registrations
+
+  resources :users
+  resources :cars
+  put 'user', to: 'users#update'
+  patch 'user', to: 'users#update'
+  #resources :users do
+  #  resources :cars
+  #end
+
+
+#, :only => [:index, :create, :show]
 #    GET          /posts  index   display a list of all posts
 #    GET          /posts/new  new   return an HTML form for creating a new post
 #    POST         /posts  create  create a new post
@@ -11,39 +22,34 @@ Community::Application.routes.draw do
 #    GET          /posts/:id/edit   edit  return an HTML form for editing a post
 #    PATCH/PUT    /posts/:id  update  update a specific post
 #    DELETE       /posts/:id  destroy   delete a specific post
-  resources :user
+  #resources :user
 
-  resources :authentications
-  resources :brands
+  #resources :brands
   #resources :cars
   #resources :orders
-  resources :performers
-  resources :phones
-  resources :pictures
-  #resources :roles
-  resources :services
-  resources :services_brands
-  resources :special_deal_statuses
+  #resources :performers
+  #resources :phones
+  #resources :pictures
 
-  resources :special_deals
-  resources :special_deal
-  #resources :statuses
-  #resources :users
+  #resources :services
+  #resources :services_brands
+  #resources :special_deal_statuses
 
-  resources :users_cars
-  resources :users_services
+  #resources :special_deals
+  #resources :special_deal
 
-  namespace :admin do
-    resources :roles, :statuses
-    resource :role, :status
-  end
+  #resources :users_cars
+  #resources :users_services
 
-  resources :users do
-    resources :orders, shallow: true
-  end
-  resources :cars do
-    resources :orders, shallow: true
-  end
+  #namespace :admin do
+  #  resources :roles, :statuses
+  #  resource :role, :status
+  #end
 
-
+  #resources :users do
+  #  resources :orders, shallow: true
+  #end
+  #resources :cars do
+  #  resources :orders, shallow: true
+  #end
 end
