@@ -1,5 +1,5 @@
 class UsersCar < ActiveRecord::Base
-	attr_accessible :user_id, :car_id
+  attr_accessible :user_id, :car_id
   
   belongs_to :user
   belongs_to :car

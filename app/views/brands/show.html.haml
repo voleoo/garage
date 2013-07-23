@@ -1,0 +1,10 @@
+%p#notice= notice
+
+.brand= @brand.brand
+.services
+  - @brand.services.each do |service|
+    .service= service.service
+    
+= link_to 'Edit', edit_brand_path(@brand)
+\|
+= link_to 'Back', brands_path

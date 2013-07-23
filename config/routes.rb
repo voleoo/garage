@@ -7,8 +7,11 @@ Community::Application.routes.draw do
 
   resources :users
   resources :cars
-  put 'user', to: 'users#update'
-  patch 'user', to: 'users#update'
+  resources :phones
+  resources :services
+  resources :brands
+
+  
   #resources :users do
   #  resources :cars
   #end

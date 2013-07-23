@@ -4,6 +4,6 @@ class RenameColumnInAuthenticationLoginToEmail < ActiveRecord::Migration
   end
   
   def down
-		rename_column :authentications, :email, :login
+    rename_column :authentications, :email, :login
   end
 end

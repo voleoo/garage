@@ -11,7 +11,15 @@
 %br
 %b Status:
 = @user.status.status
-%br
+%br Phones
+- @user.phones.each do |phone|
+  %div.phoes
+    %span.phone= phone.phone
+    %span.phone= phone.type_number
+%br Cars
+- @user.cars.each do |car|
+  %div.cars
+    %span.car= car.vim
 
 = link_to 'Edit', edit_user_path(@user)
 \|

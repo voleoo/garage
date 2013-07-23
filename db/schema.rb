@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721082359) do
+ActiveRecord::Schema.define(version: 20130723174651) do
+
+  create_table "apples", force: true do |t|
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -35,6 +41,12 @@ ActiveRecord::Schema.define(version: 20130721082359) do
     t.text     "description"
   end
 
+  create_table "dreams", force: true do |t|
+    t.string   "dream"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "car_id"
@@ -56,7 +68,7 @@ ActiveRecord::Schema.define(version: 20130721082359) do
   create_table "phones", force: true do |t|
     t.integer  "user_id"
     t.string   "phone"
-    t.string   "type"
+    t.string   "type_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

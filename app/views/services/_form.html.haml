@@ -1,0 +1,17 @@
+= form_for @service do |f|
+  - if @service.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@service.errors.count, "error")} prohibited this service from being saved:"
+      %ul
+        - @service.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :service
+    = f.text_field :service
+  .field
+    = hidden_field_tag "service[brand_ids][]", nil
+    - Brand.all.each do |brand|
+      = check_box_tag "service[brand_ids][]", brand.id, @service.brand_ids.include?(brand.id), id: dom_id(brand)
+      = label_tag dom_id(brand), brand.brand
+  .actions
+    = f.submit 'Save'
