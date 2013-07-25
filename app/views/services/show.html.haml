@@ -5,6 +5,9 @@
 .brands
   - @service.brands.each do |brand|
     .brand= brand.brand
+.users
+  - expert_users.each do |user|
+    .user= user.first_name
 
 = link_to 'Edit', edit_service_path(@service)
 \|
